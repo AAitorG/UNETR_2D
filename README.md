@@ -1,2 +1,2 @@
 # UNETR_2D
-2D UNETR implementation in Tensorflow-keras, for EM image segmentation.
+2D UNETR implementation in Tensorflow 2.-keras, for EM image segmentation.
