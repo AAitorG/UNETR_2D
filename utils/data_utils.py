@@ -387,7 +387,6 @@ def get_empty_all_results(posible_datasets):
     all_results['numEpochs'] = []
     all_results['patience'] = []
     all_results['lr'] = []
-    all_results['freeze'] = []
     all_results['wd'] = []
     all_results['schedule'] = []
     all_results['optimizer_name'] = []

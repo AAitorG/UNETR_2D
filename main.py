@@ -28,7 +28,7 @@ set_seed()
 data_path = '../Datasets/'
 # number of different experiments (EACH LIST VALUE IS ONE EXPERIMENT,)
 num_exec = 1
-# starting execution 
+# starting experiment
 starts = 0
 # number of repetitions for each experiment
 repetitions = 2
@@ -36,7 +36,7 @@ repetitions = 2
 _exec_id = [ 'UNETR_2D-base',]* num_exec
 # output file name
 csv_out_dir = './csv_results/'
-csv_filename = csv_out_dir + 'UNETR_2D-base-CrossDataset-date-{}-results.csv'.format(str(datetime.now()).replace(':', '_'))
+csv_filename = csv_out_dir + 'UNETR_2D-base-date-{}-results.csv'.format(str(datetime.now()).replace(':', '_'))
 # Training datasets
 _train_datasets = [['Lucchi++',],] * num_exec
 # Test datasets
@@ -56,7 +56,7 @@ _schedule = ['cosine',] * num_exec
 # Optimizer name: 'Adam', 'SGD', 'rmsprop', 'AdamW'
 _optimizer_name = ['AdamW',] * num_exec
 # Loss function name: 'bce', 'bce_dice', 'mse'
-_loss_acronym = ['mse',] * num_exec
+_loss_acronym = ['bce',] * num_exec
 # batch size
 _batch_size_value = [ 6, ] * num_exec
 
@@ -82,9 +82,7 @@ _mlp_dim = [ [1024, 256], ] * num_exec
 # number of output channels (number of classes)
 _out_channels = [1,] * num_exec
 # denoise type: cutout, gaussNoise, coarseSaltP, emulate_LR, gaussian_filter, defocusBlur, motionBlur, pixeldropout
-_posible_dataAug = [[emulate_LR, cutout, gaussian_filter],] * num_exec
-# freeze part of the network
-_freeze = [False,] * num_exec
+_posible_dataAug = [[],] * num_exec
 # dropout value # [0.1, 0.1, 0.2, 0.2, 0.3]
 _dropout = [ 0.0,] * num_exec
 # multiple of ViT layers that will be used for each skip connection
@@ -102,7 +100,7 @@ _extra_tf_data_augmentation = [None,] * num_exec
 _use_saved_model = [False] * num_exec
 # Path to save weights (After training)
 _out_dir = ['./model_weights',] * num_exec
-# Path to save images
+# Path to save plots
 img_out_dir = './plots'
 # filenames for trained model weights (h5)
 _weights_filename = []
@@ -184,7 +182,6 @@ def main():
             posible_dataAug = _posible_dataAug[e]
             train_datasets = _train_datasets[e]
             test_datasets = _test_datasets[e]
-            freeze = _freeze[e]
             batch_norm = _batch_norm[e]
             da = _da[e]
             dropout = _dropout[e]
@@ -654,7 +651,6 @@ def main():
             all_results['std_inference_time_sec'].append( np.std(inference_time) )
             all_results['trainable_params'].append( trainable_count)
             all_results['non_trainable_params'].append( non_trainable_count)
-            all_results['freeze'].append( freeze )
             all_results['batch_norm'].append(batch_norm)
             all_results['data_augmentation'].append(da)
             all_results['dropout'].append(dropout)
