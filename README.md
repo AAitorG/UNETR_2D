@@ -1,15 +1,7 @@
-<h2 align="center">UNETR_2D</h2>
+<h align="center">UNETR_2D</h>
 <p align="center">2D implementation in Tensorflow2-Keras of UNETR [1], for EM image segmentation.</p>
  
 ---
- 
-**Content**
- 
- 
-* [Install](##install)
-* [Usage](##usage)
-* [License](##license)
- 
  
 ## Install
 By running the following commands in bash, you will create and start using a new python environment called 'tutorial-env' (you can change it). Then, you will clone this repository and install the dependencies, specified in [requirements.txt](requirements.txt).
