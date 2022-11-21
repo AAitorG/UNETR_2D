@@ -1,4 +1,4 @@
-<h align="center">UNETR_2D</h>
+<h1 align="center">UNETR_2D</h1>
 <p align="center">2D implementation in Tensorflow2-Keras of UNETR [1], for EM image segmentation.</p>
  
 ---
