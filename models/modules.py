@@ -18,7 +18,7 @@ class Patches(layers.Layer):
             rates=[1, 1, 1, 1],
             padding="VALID",
         )
-        patch_dims = patches.shape[-1]
+        patch_dims = tf.shape(patches)[-1]
         patches = tf.reshape(patches, [batch_size, -1, patch_dims])
         return patches
 
